@@ -4,18 +4,19 @@ import Table from './Table';
 
 require('dotenv').config();
 
+const DEFAULT_TIMEOUT = 30000;
+
 const getRealityClass = (hereIsTheUpsideDownWorld) => (
   hereIsTheUpsideDownWorld ? 'upside-down' : 'stranger-things'
 );
-
 const strangerThingsConfig = {
-  url: process.env.REACT_APP_HAWKINS_URL,
-  timeout: process.env.REACT_APP_HAWKINS_TIMEOUT,
+  url: process.env.REACT_APP_HAWKINS_URL || 'http://localhost:3002',
+  timeout: process.env.REACT_APP_HAWKINS_TIMEOUT || DEFAULT_TIMEOUT,
 };
 
 const upsideDownConfig = {
-  url: process.env.REACT_APP_UPSIDEDOWN_URL,
-  timeout: process.env.REACT_APP_UPSIDEDOWN_TIMEOUT,
+  url: process.env.REACT_APP_UPSIDEDOWN_URL || 'http://localhost:3003',
+  timeout: process.env.REACT_APP_UPSIDEDOWN_TIMEOUT || DEFAULT_TIMEOUT,
 };
 
 const charactersService = new CharactersService(strangerThingsConfig);
